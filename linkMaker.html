@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div class="container">
+	<h3>Service Now Link Maker</h3>
+    <label for="url">URL:</label>
+    <input type="text" id="url" name="url" placeholder="e.g. https://www.google.com" size="50">
+	<br><br>
+    <label for="dt">Text to Display:</label>
+    <input type="text" id="dt" name="dt" placeholder="defaults to URL if left blank" size="50">
+	<br><br>
+    <button onclick="go()">Submit</button>
+
+</div>
+
+<br><br>
+
+<div id="output">
+	
+	<script>
+		function go(){
+			var urlText = document.getElementById("url").value;
+			var dText = document.getElementById("dt").value;
+			var output = "";
+			var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+			var regex = new RegExp(expression);
+
+			if (urlText.match(regex)) {
+			  //alert("Successful match");
+			  if(dText){
+				output = escapeHtml("[code]<a class=\"web\" target=\"_blank\" href=\"" + urlText + "\">" + dText + "</a>");
+			  }else{
+				output = escapeHtml("[code]<a class=\"web\" target=\"_blank\" href=\"" + urlText + "\">" + urlText + "</a>");
+			  }
+			} else {
+			  //alert("No match");
+			  output = 'Error, invalid url';
+			}
+			
+			document.getElementById("output").innerHTML = output;
+		}
+		
+		
+		function escapeHtml(unsafe) {
+			return unsafe
+				 .replace(/&/g, "&amp;")
+				 .replace(/</g, "&lt;")
+				 .replace(/>/g, "&gt;")
+				 .replace(/"/g, "&quot;")
+				 .replace(/'/g, "&#039;");
+		}
+
+	</script>
+</div>
+
+</body>
+</html>
