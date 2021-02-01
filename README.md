@@ -1,5 +1,5 @@
 # Java-Apps
-Various helpful java applications.  Runnable jar files including:
+Various java applications.  Runnable jar files including:
 
 # getLinkInServiceNow.jar
 Light-weight app that generates a the code neccessary to insert a link into a service now worknote.  Will not work in discriptions or other dynamic free-text fields.  Allows user to enter a title that is different from the url.  Currently opens a page in a new tab
